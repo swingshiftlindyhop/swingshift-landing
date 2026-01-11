@@ -1,16 +1,899 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Video Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Swing Shift Lindy Hop - Authentic Lindy Hop and solo jazz classes, courses, and events in Bournemouth">
+    <title>Swing Shift Lindy Hop - Bournemouth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: #9b87d9;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(0,0,0,0.05) 100px, rgba(0,0,0,0.05) 102px),
+                repeating-linear-gradient(-45deg, transparent, transparent 100px, rgba(0,0,0,0.05) 100px, rgba(0,0,0,0.05) 102px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: transparent;
+            color: #fff;
+            padding: 60px 20px 40px;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 400px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 900;
+            color: #d4ff00;
+            text-shadow: 
+                -3px -3px 0 #2c2c2c,
+                3px -3px 0 #2c2c2c,
+                -3px 3px 0 #2c2c2c,
+                3px 3px 0 #2c2c2c,
+                0px 0px 10px rgba(212, 255, 0, 0.5);
+            letter-spacing: 0.05em;
+            line-height: 1.1;
+        }
+
+        header p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #2c2c2c;
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            padding: 25px;
+            border: 4px solid #2c2c2c;
+            margin: 20px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            max-height: 500px;
+            overflow: hidden;
+        }
+
+        nav.collapsed {
+            padding: 12px 25px;
+            max-height: 60px;
+            cursor: pointer;
+        }
+
+        nav h3 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 900;
+            color: #2c2c2c;
+            transition: margin 0.3s ease;
+        }
+
+        nav.collapsed h3 {
+            margin-bottom: 0;
+            font-size: 1em;
+        }
+
+        .nav-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        nav.collapsed .nav-toggle {
+            display: flex;
+        }
+
+        .progress-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: #d4ff00;
+            transform: scale(1.3);
+        }
+
+        .expand-icon {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        nav.collapsed ul {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        nav a {
+            color: #2c2c2c;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        nav a:hover {
+            border-bottom: 2px solid #d4ff00;
+        }
+
+        nav a.active {
+            border-bottom: 2px solid #d4ff00;
+        }
+
+        /* Sections */
+        section {
+            padding: 40px 20px;
+        }
+
+        .content-box {
+            background: #fff;
+            border: 4px solid #2c2c2c;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 900px;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2c2c2c;
+            font-weight: 900;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #2c2c2c;
+            font-weight: 800;
+        }
+
+        /* Course Cards */
+        .course-card {
+            background: #fff;
+            border: 4px solid #2c2c2c;
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+        }
+
+        .course-card h2 {
+            color: #2c2c2c;
+            margin-bottom: 15px;
+        }
+
+        .course-card p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: #d4ff00;
+            color: #2c2c2c;
+            padding: 18px 35px;
+            text-decoration: none;
+            border: 3px solid #2c2c2c;
+            font-weight: 900;
+            margin: 10px 5px;
+            transition: all 0.2s;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn:hover {
+            background: #fff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: #fff;
+        }
+
+        .btn-secondary:hover {
+            background: #d4ff00;
+        }
+
+        /* Testimonials */
+        .testimonial {
+            font-style: italic;
+            background: #fff;
+            padding: 30px;
+            border: 4px solid #2c2c2c;
+            border-left-width: 12px;
+            border-left-color: #d4ff00;
+            margin: 30px auto;
+            max-width: 800px;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+        }
+
+        .testimonial cite {
+            display: block;
+            text-align: right;
+            margin-top: 10px;
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        /* Video Container */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border: 4px solid #2c2c2c;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Teacher Bios */
+        .teacher-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .teacher {
+            background: #fff;
+            border: 4px solid #2c2c2c;
+            padding: 30px;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+        }
+
+        .teacher img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border: 3px solid #2c2c2c;
+            margin-bottom: 20px;
+            filter: grayscale(100%);
+        }
+
+        .teacher h3 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .teacher p {
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            max-width: 900px;
+            margin: 30px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #fff;
+            border: 4px solid #2c2c2c;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 2px solid #2c2c2c;
+        }
+
+        th {
+            background: #d4ff00;
+            color: #2c2c2c;
+            font-weight: 900;
+            border-bottom: 4px solid #2c2c2c;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        /* Q&A */
+        .qa {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .qa h3 {
+            color: #2c2c2c;
+            margin-top: 25px;
+            font-weight: 800;
+        }
+
+        .qa p {
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c2c2c;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: #d4ff00;
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .social-links a:hover {
+            border-bottom: 2px solid #d4ff00;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            nav {
+                margin: 10px;
+                top: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .video-grid, .teacher-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-box, .course-card {
+                padding: 25px;
+            }
+        }
+
+        /* Desktop: hide collapse functionality */
+        @media (min-width: 769px) {
+            .nav-toggle {
+                display: none !important;
+            }
+
+            nav.collapsed {
+                max-height: 500px;
+                padding: 25px;
+            }
+
+            nav.collapsed ul {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            nav.collapsed h3 {
+                margin-bottom: 15px;
+                font-size: 1.3em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Video Test</h1>
-    <iframe 
+    <header>
+        <div class="container">
+            <img src="SwingShiftLogo2025.png" alt="Swing Shift Lindy Hop">
+            <p>Authentic Lindy Hop and solo jazz events in Bournemouth. Classes, courses, socials, workshops and other good stuff. This dance is a whole lotta fun. And you're invited.</p>
+        </div>
+    </header>
+
+    <nav id="mainNav">
+        <div class="container">
+            <div class="nav-toggle" onclick="toggleNav()">
+                <div class="progress-dots">
+                    <span class="progress-dot" data-section="0"></span>
+                    <span class="progress-dot" data-section="1"></span>
+                    <span class="progress-dot" data-section="2"></span>
+                    <span class="progress-dot" data-section="3"></span>
+                    <span class="progress-dot" data-section="4"></span>
+                    <span class="progress-dot" data-section="5"></span>
+                    <span class="progress-dot" data-section="6"></span>
+                    <span class="progress-dot" data-section="7"></span>
+                    <span class="progress-dot" data-section="8"></span>
+                </div>
+                <span class="expand-icon">☰</span>
+            </div>
+            <h3>On this page 👇</h3>
+            <ul>
+                <li><a href="#begcourse" onclick="closeNavOnClick(event)">Beginner Course Jan-Mar 2026</a></li>
+                <li><a href="#impcourse" onclick="closeNavOnClick(event)">Improver Course Jan-Mar 2026</a></li>
+                <li><a href="#email" onclick="closeNavOnClick(event)">Get more info</a></li>
+                <li><a href="#videos" onclick="closeNavOnClick(event)">Performance clips</a></li>
+                <li><a href="#whattoexpect" onclick="closeNavOnClick(event)">What to expect</a></li>
+                <li><a href="#qabeg" onclick="closeNavOnClick(event)">Q&A for beginners</a></li>
+                <li><a href="#qaexp" onclick="closeNavOnClick(event)">Q&A for experienced dancers</a></li>
+                <li><a href="#teachers" onclick="closeNavOnClick(event)">Meet your teachers</a></li>
+                <li><a href="#dates" onclick="closeNavOnClick(event)">Class & event dates</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="begcourse">
+        <div class="container">
+            <div class="course-card">
+                <h2>NEW Beginner Course Jan-Mar 2026</h2>
+                <p>Join our 6-week beginner course<br>
+                <strong>on Mondays at BOH Studios</strong> (near the Triangle in Bournemouth)<br>
+                starting <strong>26th January</strong>.</p>
+                <p>Drop-in price for any class £10<br>
+                ... or get <em>all 6 weeks + social + free private lesson</em> for just £44</p>
+                <a href="https://swingshiftlindyhop.dancecloud.com/dance/38832" class="btn">Get details + book now</a>
+            </div>
+
+            <div class="testimonial">
+                <p>"It's super fun, and the people are lovely! It will stretch you, but you will get it!"</p>
+                <cite>– Katie</cite>
+            </div>
+        </div>
+    </section>
+
+    <section id="impcourse">
+        <div class="container">
+            <div class="course-card">
+                <h2>Improver Course Jan–Mar 2026</h2>
+                <p>Done some Lindy Hop beginner classes before? Can you triple step on autopilot, and you're ready to level up? Our improvers session is the one for you.</p>
+                <p>At Swing Shift we teach authentic Lindy Hop – that means encouraging you to find your unique style and embrace the opportunities to improvise, while also gaining confidence in the classic moves.</p>
+                <a href="https://swingshiftlindyhop.dancecloud.com/dance/38833" class="btn">Get details + book now</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="email">
+        <div class="container">
+            <div class="content-box" style="text-align: center;">
+                <h2>To find out about upcoming classes and events, join our email list</h2>
+                <ul style="list-style: none; max-width: 600px; margin: 30px auto; text-align: left;">
+                    <li>✓ Be the first to know about our <strong>future beginner intakes</strong> (plus exclusive offers and discounts)</li>
+                    <li>✓ Stay up-to-date about <strong>weekly classes</strong> and <strong>weekend workshops</strong></li>
+                    <li>✓ Get helpful <strong>class recap videos</strong> sent straight to your inbox</li>
+                    <li>✓ ...and <strong>music playlists</strong> and <strong>inspiring clips</strong> to get you fired up</li>
+                    <li>✓ ...and info about our <strong>social dance events</strong></li>
+                </ul>
+                <a href="https://swing-shift-lindy-hop.kit.com/09610de8ea" class="btn btn-secondary">Sign up here</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos">
+        <div class="container">
+            <div class="content-box">
+                <h2>Performance Team</h2>
+                <p>Authentic swing dance entertainment to get your audience moving. We showcase genuine 1920s-40s Lindy Hop, Charleston, and solo jazz at festivals, corporate events, and private parties – then get your guests up dancing too. <a href="mailto:team@swingshiftlindyhop.com" style="color: #2c2c2c; font-weight: bold;">Email us</a> to discuss your event.</p>
+            </div>
+            
+            <div class="video-grid">
+                <div>
+                    <h3>Classic Lindy Hop (choreography by Tom)</h3>
+                    <div class="video-wrapper">
+                        <iframe 
         width="560" 
         height="315" 
         src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
         frameborder="0" 
         allowfullscreen>
     </iframe>
+                    </div>
+                </div>
+                <div>
+                    <h3>Classic Solo Jazz: The Tranky Doo (orig. 1940s)</h3>
+                    <div class="video-wrapper">
+                        <iframe 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+        frameborder="0" 
+        allowfullscreen>
+    </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 60px;">Clips from classes</h2>
+            <div class="video-grid">
+                <div class="video-wrapper">
+                    <iframe 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+        frameborder="0" 
+        allowfullscreen>
+    </iframe>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px;">More videos on our <a href="https://www.youtube.com/@SwingShiftLindyHop/playlists" target="_blank">Youtube page</a></p>
+        </div>
+    </section>
+
+    <section id="whattoexpect">
+        <div class="container">
+            <div class="content-box">
+                <h2>What to expect</h2>
+                <p style="margin-bottom: 20px;">At Swing Shift, you'll find proper Lindy Hop for people who want to learn the real thing. Fast, rhythmic, and FUN. We pass on what we learned from pioneers like Frankie Manning and Norma Miller. We bring the Savoy style right from the 1930s and deliver it in the 2020s.</p>
+                <p>In our classes you'll learn a ton about partner dancing technique, embodied rhythm, and classic moves from Texas Tommy to Tandem Charleston. All spiced up with vernacular solo jazz and danced to authentic swing-era music.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="qabeg">
+        <div class="container">
+            <div class="content-box">
+                <div class="qa">
+                    <h2>Q&A for beginners</h2>
+                    
+                    <h3>Are brand-new beginners welcome?</h3>
+                    <p>Absolutely! Our beginner courses are designed for people who have never danced Lindy Hop before.</p>
+
+                    <h3>Do I need to come with a partner?</h3>
+                    <p>Nope! You'll rotate partners throughout the class, so everyone gets to dance with everyone.</p>
+
+                    <h3>Is Lindy Hop hard to learn?</h3>
+                    <p>Well... it's not the easiest dance in the world. The good news is that we've got decades of experience getting people started, getting comfortable and having fun. And obviously we're biased, but it's oh-so-worth-it.</p>
+
+                    <h3>Are there social and fitness aspects too?</h3>
+                    <p>There sure are. Put it this way... we don't bother going to the gym ;) and for many folks the Lindy Hop community becomes a source of lifelong friendships.</p>
+
+                    <a href="https://swing-shift-lindy-hop.kit.com/09610de8ea" class="btn btn-secondary">Ready to join the fun? Hop onto our email list!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="qaexp">
+        <div class="container">
+            <div class="content-box">
+                <div class="qa">
+                    <h2>Q&A for more experienced dancers</h2>
+                    
+                    <h3>Will I learn fixed patterns of moves in your classes?</h3>
+                    <p>We like to mix it up. Sometimes we teach small sequences and longer routines (including classics such as California, Stops, Lindy Chorus, Big Apple, Shim Sham, Tranky Doo). Sometimes our classes are more conceptual, where we teach an idea for you to play around with and throw into your social dancing. The latter is a bit like Marmite... some people love this approach, some don't! We're always open to honest feedback, so please do let us know how you found it afterwards.</p>
+
+                    <h3>Do you have a performance troupe?</h3>
+                    <p>We do indeed. If you're interested in really challenging yourself with some advanced technique and want to supercharge your skills, come chat to us about joining.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="teachers">
+        <div class="container">
+            <h2 style="text-align: center;">Meet your teachers</h2>
+            
+            <div class="teacher-grid">
+                <div class="teacher">
+                    <h3>Tom</h3>
+                    <p>Tom Kerwin has been dancing Lindy Hop since 1999, starting with a few classes as a student in Cambridge. But he really got bitten by the bug when he first moved to London and stumbled into the LSE Swing Dance Society. From there, he started studying with dance legends Ronnie Slide and Angela Andrew, and became obsessed with this deep, rich art form.</p>
+                    <p>Before long Tom was teaching with LSE 'Swingers' founder Dawn Wong. Later, his partnership with Angela helped him develop his approach to teaching, finding balance between technique and spirit. In the intervening years, he's taught at dance events around the UK and Europe, including the internationally-renowned Herrang Dance Camp in Sweden.</p>
+                    <p>Tom brings creativity and musicality to his dancing, and loves sharing the music and the dance with others, breaking down techniques and inspiring people to find their own style.</p>
+                    <p>He has also been known to DJ swing dance events in London, Stockholm and beyond (his extremely cool DJ name is TK Mixx).</p>
+                </div>
+
+                <div class="teacher">
+                    <h3>Corissa</h3>
+                    <p>Corissa started dancing Lindy Hop in 2016 and stepped into a teaching role in 2023. She loves the way Lindy Hop gives you the power to have an unspoken conversation with another person – and helps you discover your own presence.</p>
+                    <p>"If you keep telling yourself you'll never be a dancer, I know EXACTLY how you feel," she says. Diagnosed with dyspraxia in childhood, Corissa always saw herself as having two left feet. But having learned the ropes from Tom (who is far too modest to admit how good he is), she's glad to confirm that she does in fact have a left foot AND a right foot, and they both bloomin' love to do Lindy Hop.</p>
+                    <p>These days, nothing makes her happier than working with others to develop their skills and confidence in this outrageously rewarding dance.</p>
+                </div>
+
+                <div class="teacher">
+                    <h3>Suzy</h3>
+                    <p>Suzy was hooked by the friendly and fun atmosphere when she turned up at her first dance lesson after moving to the south coast. Having dabbled with other dance styles in the past, the swing dances immediately felt like home. Encouraged by a community of good teachers and friends she started helping out in classes. After years of finessing her technique and going to hundreds of social dances and events, she learned to demo and then to teach. Suzy has now been active on the dance scene for over 15 years.</p>
+                    <p>Lindy Hop in particular has become a passion because of its connection, expression and freedom to play, and she has been known to borrow ideas from other dances to inject into the mix.</p>
+                    <p>She loves to honour the heritage of the dance whilst also learning from local and international teachers whenever possible.</p>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <p>"Go for it! Amazing teachers and support ... friendly atmosphere where you're made to feel welcome and comfortable."</p>
+                <cite>– Paul</cite>
+            </div>
+        </div>
+    </section>
+
+    <section id="dates">
+        <div class="container">
+            <div class="content-box">
+                <h2 style="text-align: center;">Class and event dates - 2026</h2>
+                <p style="text-align: center; margin-bottom: 30px;"><strong>Location: BOH Studios, Bournemouth</strong><br>
+                To be the first to know about our other classes, workshops and social events, <a href="https://swing-shift-lindy-hop.kit.com/09610de8ea" style="color: #2c2c2c; font-weight: bold;">join the Swing Shift email list</a>.</p>
+
+                <h3 style="text-align: center; margin-top: 40px;">Social Dances and Taster Classes</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Monday 23rd February</strong></td>
+                            <td>7-8pm Solo Jazz Taster Class<br>8-10pm Social Dance</td>
+                            <td>£10</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monday March</strong></td>
+                            <td>7-8pm Beginners Taster Class<br>8-10pm Social Dance</td>
+                            <td>£10</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TBD</strong></td>
+                            <td>1-2pm Beginners Taster Class<br>2-5pm: Scuttlebutt Tea Dance</td>
+                            <td>£10</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="text-align: center; margin-top: 40px;">Beginner & Improver Courses</h3>
+                <p style="text-align: center;">Drop-in price for any class £10<br>
+                ... or get <em>all 6 weeks + social + free private lesson</em> for just £44 by <a href="https://swingshiftlindyhop.dancecloud.com/dance/38832" style="color: #2c2c2c; font-weight: bold;">booking here</a></p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>7-8:30pm</th>
+                            <th>8:30-10pm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Monday 26th January</strong></td>
+                            <td>Beginners Course 1/6</td>
+                            <td>Improvers Course 1/6</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monday 2nd February</strong></td>
+                            <td>Beginners Course 2/6</td>
+                            <td>Improvers Course 2/6</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monday 9th February</strong></td>
+                            <td>Beginners Course 3/6</td>
+                            <td>Improvers Course 3/6</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monday 16th February</strong></td>
+                            <td>Beginners Course 4/6</td>
+                            <td>Improvers Course 4/6</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monday 23rd February</strong></td>
+                            <td colspan="2">Social dance night</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monday 2nd March</strong></td>
+                            <td>Beginners Course 5/6</td>
+                            <td>Improvers Course 5/6</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monday 9th March</strong></td>
+                            <td>Beginners Course 6/6</td>
+                            <td>Improvers Course 6/6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="content-box" style="text-align: center;">
+                <h2>OK that's the end of the page – no more to read here</h2>
+                <p style="margin-bottom: 30px;">To find out about upcoming classes, hop onto our email list 👇</p>
+                <a href="https://swing-shift-lindy-hop.kit.com/09610de8ea" class="btn btn-secondary">Sign up here</a>
+            </div>
+
+            <div class="testimonial" style="margin-top: 40px;">
+                <p>"Fun ... and be prepared to get hot"</p>
+                <cite>– Mandy</cite>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/swingshiftlindyhop/">Instagram</a>
+                <a href="https://www.facebook.com/groups/swingshiftdance/">Facebook</a>
+                <a href="https://www.tiktok.com/@swingshiftlindyhop">TikTok</a>
+                <a href="sms:07980564173">Message</a>
+                <a href="mailto:team@swingshiftlindyhop.com">Email</a>
+            </div>
+            <p style="margin-top: 30px;">&copy; 2026 Swing Shift Lindy Hop</p>
+        </div>
+    </footer>
+    <script>
+        const nav = document.getElementById('mainNav');
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        const progressDots = document.querySelectorAll('.progress-dot');
+        
+        let isNavExpanded = true;
+        let lastScrollTop = 0;
+        let hasScrolled = false;
+
+        // Check if mobile
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+
+        // Collapse nav on scroll (mobile only)
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Mark that user has scrolled (mobile only)
+            if (isMobile() && scrollTop > 50 && !hasScrolled) {
+                hasScrolled = true;
+                if (isNavExpanded) {
+                    collapseNav();
+                }
+            }
+
+            // Update active section and progress dots
+            updateActiveSection();
+
+            lastScrollTop = scrollTop;
+        });
+
+        // Reset on window resize
+        window.addEventListener('resize', () => {
+            if (!isMobile()) {
+                expandNav();
+                hasScrolled = false;
+            }
+        });
+
+        // Toggle nav on click
+        function toggleNav() {
+            if (isNavExpanded) {
+                collapseNav();
+            } else {
+                expandNav();
+            }
+        }
+
+        function collapseNav() {
+            nav.classList.add('collapsed');
+            isNavExpanded = false;
+        }
+
+        function expandNav() {
+            nav.classList.remove('collapsed');
+            isNavExpanded = true;
+        }
+
+        // Close nav when clicking a link (mobile only)
+        function closeNavOnClick(event) {
+            if (isMobile()) {
+                // Small delay to allow smooth scroll to start
+                setTimeout(() => {
+                    collapseNav();
+                }, 100);
+            }
+        }
+
+        // Update active section based on scroll position
+        function updateActiveSection() {
+            let currentSection = 0;
+            
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop - 200;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                const scrollPosition = window.pageYOffset;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    currentSection = index;
+                }
+            });
+
+            // Update progress dots
+            progressDots.forEach((dot, index) => {
+                if (index === currentSection) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            // Update nav links
+            navLinks.forEach((link, index) => {
+                if (index === currentSection) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Initialize
+        updateActiveSection();
+    </script>
 </body>
 </html>
