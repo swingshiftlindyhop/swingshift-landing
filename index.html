@@ -17,9 +17,6 @@
             line-height: 1.6;
             color: #2c2c2c;
             background: #9b87d9;
-            background-image: 
-                repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(0,0,0,0.05) 100px, rgba(0,0,0,0.05) 102px),
-                repeating-linear-gradient(-45deg, transparent, transparent 100px, rgba(0,0,0,0.05) 100px, rgba(0,0,0,0.05) 102px);
         }
 
         .container {
@@ -291,14 +288,13 @@
 
         .video-wrapper-short {
             position: relative;
-            padding-bottom: 177.78%; /* 9:16 aspect ratio for Shorts */
-            height: 0;
-            overflow: hidden;
+            width: 100%;
+            max-width: 300px;
+            height: 500px; /* Cap the height to roughly mobile screen size */
+            margin: 0 auto;
             background: #000;
             border: 4px solid #2c2c2c;
             box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
-            max-width: 300px; /* Limit width so it doesn't get huge */
-            margin: 0 auto;
         }
 
         .video-wrapper-short iframe {
@@ -307,6 +303,53 @@
             left: 0;
             width: 100%;
             height: 100%;
+        }
+
+        /* Floating decorative images */
+        .section-deco {
+            position: relative;
+        }
+
+        .floating-img {
+            position: absolute;
+        }
+
+        .floating-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        /* Placeholder styling (remove once real images added) */
+        .floating-img:not(:has(img)) {
+            background: rgba(255,255,255,0.1);
+            border: 2px dashed rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Hand-drawn elements */
+        .arrow-doodle {
+            position: absolute;
+            width: 80px;
+            height: 60px;
+            z-index: 2;
+        }
+
+        .squiggle {
+            position: absolute;
+            stroke: #d4ff00;
+            stroke-width: 3;
+            fill: none;
+            z-index: 0;
         }
 
         /* Teacher Bios */
@@ -448,6 +491,11 @@
             .content-box, .course-card {
                 padding: 25px;
             }
+
+            /* Hide decorative images on mobile */
+            .floating-img, .arrow-doodle, .squiggle {
+                display: none;
+            }
         }
 
         /* Desktop: hide collapse functionality */
@@ -475,9 +523,14 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <img src="SwingShiftLogo2025.png" alt="Swing Shift Lindy Hop">
+        <div class="container" style="position: relative;">
+            <img src="SwingShiftLogo2025.png" alt="Swing Shift Lindy Hop" style="position: relative; z-index: 10;">
             <p>Authentic Lindy Hop and solo jazz events in Bournemouth. Classes, courses, socials, workshops and other good stuff. This dance is a whole lotta fun. And you're invited.</p>
+            
+            <!-- Tilted action photo -->
+            <div class="floating-img" style="position: absolute; left: -20px; top: -10px; width: 300px; transform: rotate(8deg);">
+                <img src="CutoutTandC.png" alt="Tom and Corissa dancing">
+            </div>
         </div>
     </header>
 
@@ -512,8 +565,13 @@
         </div>
     </nav>
 
-    <section id="begcourse">
-        <div class="container">
+    <section id="begcourse" class="section-deco">
+        <div class="container" style="position: relative;">
+            <!-- Vintage Whitey's Lindy Hoppers photo -->
+            <div class="floating-img vintage" style="position: absolute; left: -100px; top: 100px; width: 150px; height: 150px; transform: rotate(-5deg);">
+                [Vintage:<br>Whitey's Lindy Hoppers]
+            </div>
+            
             <div class="course-card">
                 <h2>NEW Beginner Course Jan-Mar 2026</h2>
                 <p>Join our 6-week beginner course<br>
@@ -531,8 +589,18 @@
         </div>
     </section>
 
-    <section id="impcourse">
-        <div class="container">
+    <section id="impcourse" class="section-deco">
+        <div class="container" style="position: relative;">
+            <!-- Action shot tilted -->
+            <div class="floating-img" style="position: absolute; right: -90px; top: 80px; width: 180px; height: 220px; transform: rotate(-6deg);">
+                [Action photo:<br>Advanced dancers in motion]
+            </div>
+            
+            <!-- Hand-drawn arrow pointing to button -->
+            <svg class="arrow-doodle" style="right: 120px; bottom: 40px;" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 10,10 Q 40,30 70,15 L 65,20 M 70,15 L 65,10" stroke="#d4ff00" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+            
             <div class="course-card">
                 <h2>Improver Course Jan–Mar 2026</h2>
                 <p>Done some Lindy Hop beginner classes before? Can you triple step on autopilot, and you're ready to level up? Our improvers session is the one for you.</p>
@@ -542,8 +610,17 @@
         </div>
     </section>
 
-    <section id="email">
-        <div class="container">
+    <section id="email" class="section-deco">
+        <div class="container" style="position: relative;">
+            <!-- Small vintage photos scattered -->
+            <div class="floating-img vintage" style="position: absolute; left: -70px; top: 150px; width: 120px; height: 120px; transform: rotate(12deg);">
+                [Vintage:<br>Savoy Ballroom era]
+            </div>
+            
+            <div class="floating-img vintage" style="position: absolute; right: -80px; bottom: 100px; width: 140px; height: 140px; transform: rotate(-8deg);">
+                [Vintage:<br>Classic Lindy Hop]
+            </div>
+            
             <div class="content-box" style="text-align: center;">
                 <h2>To find out about upcoming classes and events, join our email list</h2>
                 <ul style="list-style: none; max-width: 600px; margin: 30px auto; text-align: left;">
@@ -558,11 +635,21 @@
         </div>
     </section>
 
-    <section id="videos">
-        <div class="container">
+    <section id="videos" class="section-deco">
+        <div class="container" style="position: relative;">
+            <!-- Wavy connecting line -->
+            <svg class="squiggle" style="left: 0; top: -30px; width: 200px; height: 60px;" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0,30 Q 25,10 50,30 T 100,30 T 150,30 T 200,30" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            
+            <!-- Vintage dancer photo -->
+            <div class="floating-img vintage" style="position: absolute; left: 50%; top: -80px; margin-left: -75px; width: 150px; height: 150px; transform: rotate(5deg); z-index: 10;">
+                [Vintage:<br>Solo jazz dancer]
+            </div>
+            
             <div class="content-box">
                 <h2>Performance Team</h2>
-                <p>Authentic swing dance entertainment to get your audience moving. We showcase genuine 1920s-40s Lindy Hop, Charleston, and solo jazz at festivals, corporate events, and private parties – then get your guests up dancing too. <a href="mailto:team@swingshiftlindyhop.com" style="color: #2c2c2c; font-weight: bold;">Email us</a> to discuss your event.</p>
+                <p>Authentic swing dance entertainment to get your audience moving. We showcase genuine 1920s-40s Lindy Hop, Charleston, and solo jazz at festivals, corporate events, and private parties – then get your guests up dancing too. <a href="/cdn-cgi/l/email-protection#790d1c1814390a0e10171e0a11101f0d1510171d00111609571a1614" style="color: #2c2c2c; font-weight: bold;">Email us</a> to discuss your event.</p>
             </div>
             
             <div class="video-grid">
@@ -705,8 +792,18 @@
         </div>
     </section>
 
-    <section id="teachers">
-        <div class="container">
+    <section id="teachers" class="section-deco">
+        <div class="container" style="position: relative;">
+            <!-- Vintage photo top corner -->
+            <div class="floating-img vintage" style="position: absolute; right: -90px; top: 20px; width: 160px; height: 160px; transform: rotate(7deg);">
+                [Vintage:<br>Frankie Manning era]
+            </div>
+            
+            <!-- Action shot bottom left -->
+            <div class="floating-img" style="position: absolute; left: -80px; bottom: 150px; width: 140px; height: 180px; transform: rotate(-10deg);">
+                [Action photo:<br>Social dancing]
+            </div>
+            
             <h2 style="text-align: center;">Meet your teachers</h2>
             
             <div class="teacher-grid">
@@ -740,8 +837,17 @@
         </div>
     </section>
 
-    <section id="dates">
-        <div class="container">
+    <section id="dates" class="section-deco">
+        <div class="container" style="position: relative;">
+            <!-- Vintage corner decorations -->
+            <div class="floating-img vintage" style="position: absolute; left: -70px; top: 60px; width: 130px; height: 130px; transform: rotate(-12deg);">
+                [Vintage:<br>Big Apple routine]
+            </div>
+            
+            <div class="floating-img vintage" style="position: absolute; right: -60px; top: 300px; width: 110px; height: 110px; transform: rotate(15deg);">
+                [Vintage:<br>Shim Sham]
+            </div>
+            
             <div class="content-box">
                 <h2 style="text-align: center;">Class and event dates - 2026</h2>
                 <p style="text-align: center; margin-bottom: 30px;"><strong>Location: BOH Studios, Bournemouth</strong><br>
@@ -828,8 +934,13 @@
         </div>
     </section>
 
-    <section>
-        <div class="container">
+    <section class="section-deco">
+        <div class="container" style="position: relative;">
+            <!-- Final vintage touch -->
+            <div class="floating-img vintage" style="position: absolute; right: -90px; top: 50px; width: 140px; height: 140px; transform: rotate(-7deg);">
+                [Vintage:<br>Norma Miller]
+            </div>
+            
             <div class="content-box" style="text-align: center;">
                 <h2>OK that's the end of the page – no more to read here</h2>
                 <p style="margin-bottom: 30px;">To find out about upcoming classes, hop onto our email list 👇</p>
@@ -850,12 +961,12 @@
                 <a href="https://www.facebook.com/groups/swingshiftdance/">Facebook</a>
                 <a href="https://www.tiktok.com/@swingshiftlindyhop">TikTok</a>
                 <a href="sms:07980564173">Message</a>
-                <a href="mailto:team@swingshiftlindyhop.com">Email</a>
+                <a href="/cdn-cgi/l/email-protection#b8ccddd9d5f8cbcfd1d6dfcbd0d1deccd4d1d6dcc1d0d7c896dbd7d5">Email</a>
             </div>
             <p style="margin-top: 30px;">&copy; 2026 Swing Shift Lindy Hop</p>
         </div>
     </footer>
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const nav = document.getElementById('mainNav');
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('nav a[href^="#"]');
