@@ -1,0 +1,78 @@
+backend:
+  name: git-gateway
+  branch: main # or master, depending on your default branch
+
+media_folder: "images/uploads" # Where uploaded images will be stored
+public_folder: "/images/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "content/home.json"
+        fields:
+          - {label: "Header Intro Text", name: "header_intro", widget: "markdown"}
+          - {label: "Tagline", name: "tagline", widget: "string"}
+          
+          - label: "Beginner Course"
+            name: "beginner_course"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "markdown"}
+              - {label: "Price Text", name: "price", widget: "markdown"}
+              - {label: "Booking Link", name: "link", widget: "string"}
+          
+          - label: "Improver Course"
+            name: "improver_course"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "markdown"}
+              - {label: "Booking Link", name: "link", widget: "string"}
+          
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - {label: "Quote", name: "quote", widget: "text"}
+              - {label: "Author", name: "author", widget: "string"}
+          
+          - label: "Teachers"
+            name: "teachers"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Bio", name: "bio", widget: "markdown"}
+```
+
+## Step 4: Enable Identity & Git Gateway in Netlify
+
+1. Go to your Netlify dashboard
+2. Click on your site
+3. Go to **Settings** → **Identity**
+4. Click **Enable Identity**
+5. Scroll down to **Services** → **Git Gateway**
+6. Click **Enable Git Gateway**
+
+## Step 5: Set Up Registration
+
+Under **Identity** settings:
+1. **Registration preferences**: Set to "Invite only" (so only you can access)
+2. Scroll to **Emails** and configure email templates if needed
+
+## Step 6: Invite Yourself
+
+1. Go to **Identity** tab in your Netlify dashboard
+2. Click **Invite users**
+3. Enter your email
+4. Check your email and accept the invitation
+5. Set your password
+
+## Step 7: Access Your CMS
+
+Once deployed, go to:
+```
+https://your-site.netlify.app/admin
