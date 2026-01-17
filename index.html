@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Swing Shift Lindy Hop - Authentic Lindy Hop and solo jazz classes, courses, and events in Bournemouth">
     <title>Swing Shift Lindy Hop - Bournemouth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -25,6 +30,10 @@
             padding: 0 20px;
         }
 
+        section {
+            position: relative;
+        }
+        
         /* Header */
         header {
             background: transparent;
@@ -40,25 +49,23 @@
         }
 
         header h1 {
-            font-size: 3.5em;
+            font-size: 5em;
             margin-bottom: 10px;
             font-weight: 900;
+            font-family: 'Staatliches', sans-serif;
             color: #d4ff00;
             text-shadow: 
-                -3px -3px 0 #2c2c2c,
-                3px -3px 0 #2c2c2c,
-                -3px 3px 0 #2c2c2c,
-                3px 3px 0 #2c2c2c,
-                0px 0px 10px rgba(212, 255, 0, 0.5);
+                -2px -2px 0 #2c2c2c,
+                2px -2px 0 #2c2c2c,
+                -2px 2px 0 #2c2c2c,
+                2px 2px 0 #2c2c2c;
             letter-spacing: 0.05em;
             line-height: 1.1;
         }
 
         header p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto;
-            color: #2c2c2c;
+            position: relative;
+            z-index: 5;
         }
 
         /* Navigation */
@@ -176,17 +183,21 @@
         }
 
         h2 {
-            font-size: 2.5em;
+            font-size: 3.5em;
+            line-height: 1.1em;
             margin-bottom: 20px;
             color: #2c2c2c;
             font-weight: 900;
+            font-family: 'Staatliches', sans-serif;
+            text-shadow: 1px 1px 0 #E5FF1D;
         }
 
         h3 {
-            font-size: 1.5em;
+            font-size: 2em;
             margin-bottom: 15px;
             color: #2c2c2c;
             font-weight: 800;
+            font-family: 'Staatliches', sans-serif;
         }
 
         /* Course Cards */
@@ -214,21 +225,22 @@
             display: inline-block;
             background: #d4ff00;
             color: #2c2c2c;
-            padding: 18px 35px;
+            padding: 25px 50px;
             text-decoration: none;
-            border: 3px solid #2c2c2c;
+            border: 4px solid #2c2c2c;
             font-weight: 900;
+            font-size: 1.3em;
             margin: 10px 5px;
             transition: all 0.2s;
-            box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.3);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
         }
 
         .btn:hover {
             background: #fff;
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
         }
 
         .btn-secondary {
@@ -239,22 +251,71 @@
             background: #d4ff00;
         }
 
-        /* Testimonials */
+        /* Testimonials - Pop Art Speech Bubbles */
         .testimonial {
-            background: rgba(255,255,255,0.9);
-            border: 3px solid #2c2c2c;
-            padding: 25px;
-            margin: 30px auto;
-            max-width: 800px;
-            box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+            background: 
+                radial-gradient(circle, #ddd 1px, transparent 1px),
+                radial-gradient(circle, #ddd 1px, transparent 1px),
+                #fff;
+            background-size: 20px 20px, 20px 20px;
+            background-position: 0 0, 10px 10px;
+            border: 5px solid #2c2c2c;
+            border-radius: 20px;
+            padding: 30px 35px;
+            margin: 40px auto;
+            max-width: 600px;
+            box-shadow: 8px 8px 0 #2c2c2c;
+            transform: rotate(-1.5deg);
+            position: relative;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.1em;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .testimonial::before {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50px;
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 0px solid transparent;
+            border-top: 30px solid #fff;
+            border-bottom: 0px solid transparent;
+        }
+
+        .testimonial::after {
+            content: '';
+            position: absolute;
+            bottom: -35px;
+            left: 45px;
+            width: 0;
+            height: 0;
+            border-left: 35px solid transparent;
+            border-right: 0px solid transparent;
+            border-top: 35px solid #2c2c2c;
+            border-bottom: 0px solid transparent;
+        }
+
+        .testimonial p {
+            margin: 0;
+            color: #2c2c2c;
         }
 
         .testimonial cite {
             display: block;
             text-align: right;
-            margin-top: 10px;
+            margin-top: 15px;
             font-style: normal;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 0.9em;
+            color: #2c2c2c;
+        }
+
+        .testimonial cite::before {
+            content: '— ';
         }
 
         /* Video Container */
@@ -433,10 +494,76 @@
             border-bottom: 2px solid #d4ff00;
         }
 
+        .course-card {
+            position: relative;
+            overflow: visible;
+        }
+
+        .card-float-img {
+            float: right;
+            height: 300px;
+            width: auto;
+            margin-right: -100px; /* Pulls it over the border */
+            margin-left: 30px; /* Space between text and image */
+            margin-top: 100px;
+            shape-outside: margin-box;
+            z-index: 5;
+        }
+
+        @media (max-width: 768px) {
+            .card-float-img {
+                float: none;
+                margin: 20px auto;
+                margin-right: auto;
+                margin-left: auto;
+                display: block;
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2.2em;
+                font-size: 3em;
+            }
+
+            header .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            header .container > img {
+                order: 1;
+                margin: 0 auto;
+            }
+            
+            header p[style*="Staatliches"] {
+                order: 2;
+                font-size: 1.5em !important;
+            }
+            
+            .header-dancers {
+                order: 3 !important;
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                width: 350px !important;
+                margin: 0px auto !important;
+                transform: rotate(3deg) !important;
+            }
+            
+            header > div > div[style*="text-align: center"] {
+                order: 4;
+            }
+            
+            header div[style*="transform: rotate"] {
+                transform: rotate(-1.5deg) !important;
+                padding: 4px 30px !important;
+            }
+
+            header div[style*="transform: rotate"] p {
+                font-size: 1.1em !important;
+                white-space: normal !important;
             }
 
             nav {
@@ -450,7 +577,7 @@
             }
 
             h2 {
-                font-size: 1.8em;
+                font-size: 2.5em;
             }
 
             .video-grid, .teacher-grid {
@@ -461,8 +588,8 @@
                 padding: 25px;
             }
 
-            /* Move decorative images inline on mobile */
-            .floating-img {
+            /* Move OTHER decorative images inline on mobile (not header dancers) */
+            .floating-img:not(.header-dancers) {
                 position: relative !important;
                 left: auto !important;
                 right: auto !important;
@@ -483,11 +610,19 @@
     <header>
         <div class="container" style="position: relative;">
             <img src="SwingShiftLogo2025.png" alt="Swing Shift Lindy Hop" style="position: relative; z-index: 10;">
-            <p>Authentic Lindy Hop and solo jazz events in Bournemouth. Classes, courses, socials, workshops and other good stuff. This dance is a whole lotta fun. And you're invited.</p>
             
-            <!-- Tilted action photo -->
-            <div class="floating-img" style="position: absolute; left: -20px; top: -10px; width: 300px; transform: rotate(8deg);">
+            <!-- Tilted action photo - will reorder on mobile -->
+            <div class="floating-img header-dancers" style="position: absolute; left: -20px; top: -35px; width: 360px; transform: rotate(8deg);">
                 <img src="CutoutTandC.png" alt="Tom and Corissa dancing">
+            </div>
+            
+            <p style="font-family: 'Staatliches', sans-serif; font-size: 1.8em; max-width: 800px; margin: 20px auto 30px; color: #2c2c2c; line-height: 1.4;"><span style="font-weight: 700;">Authentic Lindy Hop and solo jazz events</span> in Bournemouth.<br><span style="font-weight: 700;">Classes, courses, socials, workshops</span> and other good stuff.</p>
+            
+            <!-- Thin angled banner with handwritten tagline -->
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div style="background: #fff; padding: 4px 40px; transform: rotate(-1.5deg); display: inline-block;">
+                    <p style="margin: 0; font-family: 'Staatliches', sans-serif; font-size: 1.3em; font-weight: 700; color: #2c2c2c; white-space: nowrap;">This dance is a whole lotta fun – and you're invited.</p>
+                </div>
             </div>
         </div>
     </header>
@@ -505,6 +640,7 @@
                     <span class="progress-dot" data-section="6"></span>
                     <span class="progress-dot" data-section="7"></span>
                     <span class="progress-dot" data-section="8"></span>
+                    <span class="progress-dot" data-section="9"></span>
                 </div>
                 <span class="expand-icon">☰</span>
             </div>
@@ -513,10 +649,11 @@
                 <li><a href="#begcourse" onclick="closeNavOnClick(event)">Beginner Course Jan-Mar 2026</a></li>
                 <li><a href="#impcourse" onclick="closeNavOnClick(event)">Improver Course Jan-Mar 2026</a></li>
                 <li><a href="#email" onclick="closeNavOnClick(event)">Get more info</a></li>
-                <li><a href="#videos" onclick="closeNavOnClick(event)">Performance clips</a></li>
                 <li><a href="#whattoexpect" onclick="closeNavOnClick(event)">What to expect</a></li>
+                <li><a href="#classclips" onclick="closeNavOnClick(event)">Clips from classes</a></li>
                 <li><a href="#qabeg" onclick="closeNavOnClick(event)">Q&A for beginners</a></li>
                 <li><a href="#qaexp" onclick="closeNavOnClick(event)">Q&A for experienced dancers</a></li>
+                <li><a href="#videos" onclick="closeNavOnClick(event)">Performance Team</a></li>
                 <li><a href="#teachers" onclick="closeNavOnClick(event)">Meet your teachers</a></li>
                 <li><a href="#dates" onclick="closeNavOnClick(event)">Class & event dates</a></li>
             </ul>
@@ -526,12 +663,10 @@
     <section id="begcourse" class="section-deco">
         <div class="container" style="position: relative;">
             <!-- Vintage Whitey's Lindy Hoppers photo -->
-            <div class="floating-img vintage" style="position: absolute; left: -100px; top: 100px; width: 150px; height: 150px; transform: rotate(-5deg);">
-                [Vintage:<br>Whitey's Lindy Hoppers]
-            </div>
             
             <div class="course-card">
-                <h2>NEW Beginner Course Jan-Mar 2026</h2>
+                <img src="CutoutLeon.png" alt="Leon James and Norma Miller dancing" class="card-float-img">
+                <h2>NEW Beginner Course <br> Jan-Mar 2026</h2>
                 <p>Join our 6-week beginner course<br>
                 <strong>on Mondays at BOH Studios</strong> (near the Triangle in Bournemouth)<br>
                 starting <strong>26th January</strong>.</p>
@@ -542,24 +677,17 @@
 
             <div class="testimonial">
                 <p>"It's super fun, and the people are lovely! It will stretch you, but you will get it!"</p>
-                <cite>– Katie</cite>
+                <cite>– Katie Thorn</cite>
             </div>
         </div>
     </section>
 
     <section id="impcourse" class="section-deco">
         <div class="container" style="position: relative;">
-            <!-- Action shot tilted -->
-            <div class="floating-img" style="position: absolute; right: -90px; top: 80px; width: 180px; height: 220px; transform: rotate(-6deg);">
-                [Action photo:<br>Advanced dancers in motion]
-            </div>
-            
-            <!-- Hand-drawn arrow pointing to button -->
-            <svg class="arrow-doodle" style="right: 120px; bottom: 40px;" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 10,10 Q 40,30 70,15 L 65,20 M 70,15 L 65,10" stroke="#d4ff00" stroke-width="3" fill="none" stroke-linecap="round"/>
-            </svg>
             
             <div class="course-card">
+                <img src="CutoutJig.png" alt="Advanced dancers" class="card-float-img">
+                
                 <h2>Improver Course Jan–Mar 2026</h2>
                 <p>Done some Lindy Hop beginner classes before? Can you triple step on autopilot, and you're ready to level up? Our improvers session is the one for you.</p>
                 <p>At Swing Shift we teach authentic Lindy Hop – that means encouraging you to find your unique style and embrace the opportunities to improvise, while also gaining confidence in the classic moves.</p>
@@ -568,16 +696,13 @@
         </div>
     </section>
 
+
     <section id="email" class="section-deco">
+        <!-- Bouncy squiggle -->
+        <svg class="squiggle" style="right: 10%; top: -40px; width: 150px; height: 50px; transform: rotate(5deg);" viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 10,25 Q 30,10 50,25 Q 70,40 90,25 Q 110,10 130,25" stroke="#E5FF1D" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
         <div class="container" style="position: relative;">
-            <!-- Small vintage photos scattered -->
-            <div class="floating-img vintage" style="position: absolute; left: -70px; top: 150px; width: 120px; height: 120px; transform: rotate(12deg);">
-                [Vintage:<br>Savoy Ballroom era]
-            </div>
-            
-            <div class="floating-img vintage" style="position: absolute; right: -80px; bottom: 100px; width: 140px; height: 140px; transform: rotate(-8deg);">
-                [Vintage:<br>Classic Lindy Hop]
-            </div>
             
             <div class="content-box" style="text-align: center;">
                 <h2>To find out about upcoming classes and events, join our email list</h2>
@@ -593,113 +718,11 @@
         </div>
     </section>
 
-    <section id="videos" class="section-deco">
-        <div class="container" style="position: relative;">
-            <!-- Wavy connecting line -->
-            <svg class="squiggle" style="left: 0; top: -30px; width: 200px; height: 60px;" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 0,30 Q 25,10 50,30 T 100,30 T 150,30 T 200,30" stroke-width="4" stroke-linecap="round"/>
-            </svg>
-            
-            <!-- Vintage dancer photo -->
-            <div class="floating-img vintage" style="position: absolute; left: 50%; top: -80px; margin-left: -75px; width: 150px; height: 150px; transform: rotate(5deg); z-index: 10;">
-                [Vintage:<br>Solo jazz dancer]
-            </div>
-            
-            <div class="content-box">
-                <h2>Performance Team</h2>
-                <p>Authentic swing dance entertainment to get your audience moving. We showcase genuine 1920s-40s Lindy Hop, Charleston, and solo jazz at festivals, corporate events, and private parties – then get your guests up dancing too. <a href="mailto:contact@swingshiftlindyhop.com" style="color: #2c2c2c; font-weight: bold;">Email us</a> to discuss your event.</p>
-            </div>
-            
-            <div class="video-grid">
-                <div>
-                    <h3>Classic Lindy Hop (choreography by Tom)</h3>
-                    <div class="video-wrapper-short">
-                        <iframe 
-                            width="560" 
-                            height="315" 
-                            src="https://www.youtube.com/embed/y90rMHZkZFk" 
-                            frameborder="0" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-                <div>
-                    <h3>Classic Solo Jazz: The Tranky Doo (orig. 1940s)</h3>
-                    <div class="video-wrapper-short">
-                        <iframe 
-                            width="560" 
-                            height="315" 
-                            src="https://www.youtube.com/embed/Yt6Hwg4OAwE" 
-                            frameborder="0" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-
-            <h2 style="margin-top: 60px;">Clips from classes</h2>
-            <div class="video-grid">
-                <div>
-                    <div class="video-wrapper-short">
-                        <iframe 
-                            src="https://www.youtube.com/embed/swPaBrBJ7GY" 
-                            title="Class clip 1"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-                <div>
-                    <div class="video-wrapper-short">
-                        <iframe 
-                            src="https://www.youtube.com/embed/WIDMr3rJZFs" 
-                            title="Class clip 2"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-                <div>
-                    <div class="video-wrapper-short">
-                        <iframe 
-                            src="https://www.youtube.com/embed/P0wPOv2NNM8" 
-                            title="Class clip 3"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-                <div>
-                    <div class="video-wrapper-short">
-                        <iframe 
-                            src="https://www.youtube.com/embed/4Tz4u2SQ_A4" 
-                            title="Class clip 4"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-                <div>
-                    <div class="video-wrapper-short">
-                        <iframe 
-                            src="https://www.youtube.com/embed/P_B85BMRsjU" 
-                            title="Class clip 5"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-            <p style="text-align: center; margin-top: 20px;">More videos on our <a href="https://www.youtube.com/@SwingShiftLindyHop/playlists" target="_blank">Youtube page</a></p>
-        </div>
-    </section>
-
     <section id="whattoexpect">
+        <!-- Zigzag energy line -->
+        <svg class="squiggle" style="left: 5%; top: -35px; width: 180px; height: 45px;" viewBox="0 0 180 45" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 10,35 L 40,10 L 70,35 L 100,10 L 130,35 L 160,15" stroke="#E5FF1D" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
         <div class="container">
             <div class="content-box">
                 <h2>What to expect</h2>
@@ -707,9 +730,87 @@
                 <p>In our classes you'll learn a ton about partner dancing technique, embodied rhythm, and classic moves from Texas Tommy to Tandem Charleston. All spiced up with vernacular solo jazz and danced to authentic swing-era music.</p>
             </div>
         </div>
+        <div class="testimonial" style="margin-top: 40px;">
+            <p>"Beautifully patient teachers who always encourage us to find our own style"</p>
+            <cite>– Paul Fisher</cite>
+        </div>
+    </section>
+
+    <section id="classclips">
+        <!-- Loopy squiggle -->
+        <svg class="squiggle" style="left: 50%; top: -45px; width: 200px; height: 60px; transform: translateX(-50%) rotate(-3deg);" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 20,30 Q 50,5 80,30 T 140,30 Q 170,50 200,30" stroke="#E5FF1D" stroke-width="5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="container">
+            <div class="content-box">
+                <h2>Clips from classes</h2>
+                <div class="video-grid">
+                    <div>
+                        <div class="video-wrapper-short">
+                            <iframe 
+                                src="https://www.youtube.com/embed/swPaBrBJ7GY" 
+                                title="Class clip 1"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="video-wrapper-short">
+                            <iframe 
+                                src="https://www.youtube.com/embed/WIDMr3rJZFs" 
+                                title="Class clip 2"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="video-wrapper-short">
+                            <iframe 
+                                src="https://www.youtube.com/embed/P0wPOv2NNM8" 
+                                title="Class clip 3"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="video-wrapper-short">
+                            <iframe 
+                                src="https://www.youtube.com/embed/4Tz4u2SQ_A4" 
+                                title="Class clip 4"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="video-wrapper-short">
+                            <iframe 
+                                src="https://www.youtube.com/embed/P_B85BMRsjU" 
+                                title="Class clip 5"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 20px;">More videos on our <a href="https://www.youtube.com/@SwingShiftLindyHop/playlists" target="_blank">Youtube page</a></p>
+            </div>
+        </div>
     </section>
 
     <section id="qabeg">
+        <!-- Short swoosh -->
+        <svg class="squiggle" style="right: 15%; top: -30px; width: 100px; height: 40px; transform: rotate(-10deg);" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 10,30 Q 40,5 90,20" stroke="#E5FF1D" stroke-width="5" fill="none" stroke-linecap="round"/>
+        </svg>
         <div class="container">
             <div class="content-box">
                 <div class="qa">
@@ -740,45 +841,88 @@
                     <h2>Q&A for more experienced dancers</h2>
                     
                     <h3>Will I learn fixed patterns of moves in your classes?</h3>
-                    <p>We like to mix it up. Sometimes we teach small sequences and longer routines (including classics such as California, Stops, Lindy Chorus, Big Apple, Shim Sham, Tranky Doo). Sometimes our classes are more conceptual, where we teach an idea for you to play around with and throw into your social dancing. The latter is a bit like Marmite... some people love this approach, some don't! We're always open to honest feedback, so please do let us know how you found it afterwards.</p>
+                    <p>Sometimes, but we like to mix it up.</p>
+                    <p>We do teach short sequences as well as longer routines (including classics such as California, Stops, Lindy Chorus, Big Apple, Shim Sham, Tranky Doo). But often our classes are more conceptual, where we share an idea for you to play around with and throw into your social dancing. The latter is a bit like Marmite... some people love this approach, some don't! We're always open to honest feedback, so please do let us know how you found it afterwards.</p>
 
                     <h3>Do you have a performance troupe?</h3>
-                    <p>We do indeed. If you're interested in really challenging yourself with some advanced technique and want to supercharge your skills, come chat to us about joining.</p>
+                    <p>We do indeed. If you're interested in really challenging yourself with advanced techniques, and want to supercharge your skills at breakneck tempos, come chat to us about joining.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="section-deco">
+        <div class="container" style="position: relative;">
+            <!-- Wavy connecting line -->
+            <svg class="squiggle" style="left: 0; top: -30px; width: 200px; height: 60px;" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0,30 Q 25,10 50,30 T 100,30 T 150,30 T 200,30" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            
+            <div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto;">
+                <div class="content-box" style="flex: 1; min-width: 300px; max-width: 700px; margin: 20px;">
+                    <h2>Performance Troupe</h2>
+                    <p>Authentic swing dance entertainment to get your audience moving. We showcase genuine 1920s-40s Lindy Hop, Charleston, and solo jazz at festivals, corporate events, and private parties – then get your guests up dancing too. <a href="mailto:contact@swingshiftlindyhop.com" style="color: #2c2c2c; font-weight: bold;">Email us</a> to discuss your event.</p>
+                </div>
+                
+                <div style="flex: 0 0 auto;">
+                    <img src="CutoutFrankieAnn.png" alt="Frankie Manning and Ann Johnson" style="height: 300px; width: auto; filter: grayscale(100%) contrast(1.1); transform: rotate(2deg);">
+                </div>
+            </div>
+            
+            <div class="video-grid" style="margin-top: 40px;">
+                <div>
+                    <h3>Classic Lindy Hop Routine (choreography by Tom)</h3>
+                    <div class="video-wrapper-short">
+                        <iframe 
+                            width="560" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/y90rMHZkZFk" 
+                            frameborder="0" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div>
+                    <h3>Classic Solo Jazz: The Tranky Doo (orig. 1940s)</h3>
+                    <div class="video-wrapper-short">
+                        <iframe 
+                            width="560" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/Yt6Hwg4OAwE" 
+                            frameborder="0" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="teachers" class="section-deco">
+        <!-- Gentle wave -->
+        <svg class="squiggle" style="left: 8%; top: -38px; width: 170px; height: 50px; transform: rotate(2deg);" viewBox="0 0 170 50" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 10,25 Q 45,10 80,25 Q 115,40 150,25" stroke="#E5FF1D" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
         <div class="container" style="position: relative;">
-            <!-- Vintage photo top corner -->
-            <div class="floating-img vintage" style="position: absolute; right: -90px; top: 20px; width: 160px; height: 160px; transform: rotate(7deg);">
-                [Vintage:<br>Frankie Manning era]
-            </div>
-            
-            <!-- Action photo -->
-            <div class="floating-img" style="position: absolute; left: -80px; top: 250px; width: 170px; height: 200px; transform: rotate(-8deg);">
-                [Action photo:<br>Social dancing]
-            </div>
             
             <div class="content-box">
                 <h2>Meet your teachers</h2>
                 <div class="teacher-grid">
                     <div class="teacher-card">
-                        <h3>Tom</h3>
-                        <p>Tom Kerwin has been dancing Lindy Hop since 1999, starting with a few classes as a student in Cambridge. But he really got bitten by the bug when he first moved to London and stumbled into the LSE Swing Dance Society. From there, he started studying with dance legends Ronnie Slide and Angela Andrew, and became obsessed with this deep, rich art form.</p>
+                        <h3>Tom Kerwin</h3>
+                        <p>Tom has been dancing Lindy Hop since 1999, starting with a few classes as a student in Cambridge. But he really got bitten by the bug when he first moved to London and stumbled into the LSE Swing Dance Society. From there, he started studying with dance legends Ronnie Slide and Angela Andrew, and became obsessed with this deep, rich art form.</p>
                         <p>Before long Tom was teaching with LSE 'Swingers' founder Dawn Wong. Later, his partnership with Angela helped him develop his approach to teaching, finding balance between technique and spirit. In the intervening years, he's taught at dance events around the UK and Europe, including the internationally-renowned Herrang Dance Camp in Sweden.</p>
                         <p>Tom brings creativity and musicality to his dancing, and loves sharing the music and the dance with others, breaking down techniques and inspiring people to find their own style.</p>
                         <p>He has also been known to DJ swing dance events in London, Stockholm and beyond (his extremely cool DJ name is TK Mixx).</p>
                     </div>
                     <div class="teacher-card">
-                        <h3>Corissa</h3>
+                        <h3>Corissa Nunn</h3>
                         <p>Corissa started dancing Lindy Hop in 2016 and stepped into a teaching role in 2023. She loves the way Lindy Hop gives you the power to have an unspoken conversation with another person – and helps you discover your own presence.</p>
                         <p>"If you keep telling yourself you'll never be a dancer, I know EXACTLY how you feel," she says. Diagnosed with dyspraxia in childhood, Corissa always saw herself as having two left feet. But having learned the ropes from Tom (who is far too modest to admit how good he is), she's glad to confirm that she does in fact have a left foot AND a right foot, and they both bloomin' love to do Lindy Hop.</p>
                         <p>These days, nothing makes her happier than working with others to develop their skills and confidence in this outrageously rewarding dance.</p>
                     </div>
                     <div class="teacher-card">
-                        <h3>Suzy</h3>
+                        <h3>Suzy Knight</h3>
                         <p>Suzy was hooked by the friendly and fun atmosphere when she turned up at her first dance lesson after moving to the south coast. Having dabbled with other dance styles in the past, the swing dances immediately felt like home. Encouraged by a community of good teachers and friends she started helping out in classes. After years of finessing her technique and going to hundreds of social dances and events, she learned to demo and then to teach. Suzy has now been active on the dance scene for over 15 years.</p>
                         <p>Lindy Hop in particular has become a passion because of its connection, expression and freedom to play, and she has been known to borrow ideas from other dances to inject into the mix.</p>
                         <p>She loves to honour the heritage of the dance whilst also learning from local and international teachers whenever possible.</p>
@@ -786,21 +930,21 @@
                 </div>
             </div>
 
-            <div class="testimonial" style="margin-top: 40px;">
-                <p>"Beautifully patient teachers who always encourage us to find our own style"</p>
-                <cite>– Paul</cite>
-            </div>
         </div>
     </section>
 
     <section id="dates" class="section-deco">
+        <!-- Excited squiggle -->
+        <svg class="squiggle" style="right: 12%; top: -42px; width: 160px; height: 55px; transform: rotate(-8deg);" viewBox="0 0 160 55" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 10,40 Q 30,15 50,40 Q 70,10 90,40 Q 110,20 130,40 L 150,25" stroke="#E5FF1D" stroke-width="5" fill="none" stroke-linecap="round"/>
+        </svg>
         <div class="container" style="position: relative;">
             <!-- Vintage corner decorations -->
-            <div class="floating-img vintage" style="position: absolute; left: -70px; top: 60px; width: 130px; height: 130px; transform: rotate(-12deg);">
+            <div class="floating-img vintage" style="visibility: hidden; position: absolute; left: -70px; top: 60px; width: 130px; height: 130px; transform: rotate(-12deg);">
                 [Vintage:<br>Big Apple routine]
             </div>
             
-            <div class="floating-img vintage" style="position: absolute; right: -60px; top: 300px; width: 110px; height: 110px; transform: rotate(15deg);">
+            <div class="floating-img vintage" style="visibility: hidden; position: absolute; right: -60px; top: 300px; width: 110px; height: 110px; transform: rotate(15deg);">
                 [Vintage:<br>Shim Sham]
             </div>
             
@@ -893,7 +1037,7 @@
     <section class="section-deco">
         <div class="container" style="position: relative;">
             <!-- Final vintage touch -->
-            <div class="floating-img vintage" style="position: absolute; right: -90px; top: 50px; width: 140px; height: 140px; transform: rotate(-7deg);">
+            <div class="floating-img vintage" style="visibility: hidden; position: absolute; right: -90px; top: 50px; width: 140px; height: 140px; transform: rotate(-7deg);">
                 [Vintage:<br>Norma Miller]
             </div>
             
@@ -904,7 +1048,7 @@
             </div>
 
             <div class="testimonial" style="margin-top: 40px;">
-                <p>"Fun ... and be prepared to get hot"</p>
+                <p>"Fun ... <br>and be prepared to get hot!"</p>
                 <cite>– Mandy</cite>
             </div>
         </div>
