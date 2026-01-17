@@ -1,0 +1,29 @@
+{
+  "header": {
+    "intro": "**Authentic Lindy Hop and solo jazz events** in Bournemouth. **Classes, courses, socials, workshops** and other good stuff.",
+    "tagline": "This dance is a whole lotta fun – and you're invited."
+  },
+  "beginner": {
+    "title": "NEW Beginner Course Jan-Mar 2026",
+    "description": "Join our 6-week beginner course\n**on Mondays at BOH Studios** (near the Triangle in Bournemouth)\nstarting **26th January**.",
+    "price": "Drop-in price for any class £10\n... or get *all 6 weeks + social + free private lesson* for just £44",
+    "url": "https://swingshiftlindyhop.dancecloud.com/dance/38832"
+  },
+  "improver": {
+    "title": "Improver Course Jan–Mar 2026",
+    "description": "Done some Lindy Hop beginner classes before? Can you triple step on autopilot, and you're ready to level up? Our improvers session is the one for you.\n\nAt Swing Shift we teach authentic Lindy Hop – that means encouraging you to find your unique style and embrace the opportunities to improvise, while also gaining confidence in the classic moves.",
+    "url": "https://swingshiftlindyhop.dancecloud.com/dance/38833"
+  },
+  "testimonials": [
+    {
+      "quote": "It's super fun, and the people are lovely! It will stretch you, but you will get it!",
+      "author": "Katie Thorn"
+    }
+  ],
+  "teachers": [
+    {
+      "name": "Tom",
+      "bio": "Tom Kerwin has been dancing Lindy Hop since 1999..."
+    }
+  ]
+}
