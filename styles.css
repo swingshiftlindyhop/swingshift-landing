@@ -560,12 +560,12 @@ footer {
     }
     
     .logo {
-        width: 320px;
+        width: 280px;
     }  
 
     header p[style*="Staatliches"] {
         order: 2;
-        font-size: 1.5em !important;
+        font-size: 1.6em !important;
     }
     
     .header-dancers {
@@ -574,7 +574,7 @@ footer {
         left: auto !important;
         top: auto !important;
         width: 320px !important;
-        margin: -20px auto 0px !important;
+        margin: -30px auto 0px !important;
         transform: rotate(3deg) !important;
     }
     
@@ -618,6 +618,11 @@ footer {
 
     .content-box, .course-card {
         padding: 25px;
+    }
+
+    .testimonial {
+        font-size: 1.2em !important;
+
     }
 
     /* Move OTHER decorative images inline on mobile (not header dancers) */
