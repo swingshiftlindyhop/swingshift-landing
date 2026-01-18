@@ -560,12 +560,12 @@ footer {
     }
     
     .logo {
-        width: 320px;
+        width: 260px;
     }  
 
     header p[style*="Staatliches"] {
         order: 2;
-        font-size: 1.5em !important;
+        font-size: 1.25em !important;
     }
     
     .header-dancers {
@@ -573,8 +573,8 @@ footer {
         position: relative !important;
         left: auto !important;
         top: auto !important;
-        width: 350px !important;
-        margin: 0px auto !important;
+        width: 320px !important;
+        margin: -30px auto 0px !important;
         transform: rotate(3deg) !important;
     }
     
