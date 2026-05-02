@@ -269,8 +269,19 @@
         </svg>
         <div class="container">
             <div class="content-box">
-                <h2>Clips from classes</h2>
+                <h2>Clips from classes and socials</h2>
                 <div class="video-grid">
+                    <div>
+                        <div class="video-wrapper-short">
+                            <iframe 
+                                src="https://www.youtube.com/embed/V8PqpkAxfQw" 
+                                title="Social clip 1"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
                     <div>
                         <div class="video-wrapper-short">
                             <iframe 
@@ -848,34 +859,28 @@
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('nav a[href^="#"]');
         const progressDots = document.querySelectorAll('.progress-dot');
-        const expandIcon = document.querySelector('.expand-icon');
-        
-        let isNavExpanded = true;
-        let hasScrolled = false;
     
-        // Collapse nav on scroll (all screen widths)
+        let isNavExpanded = true;
+        let lastScrollTop = 0;
+    
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Collapse after scrolling down 720px
-            if (scrollTop > 710 && !hasScrolled) {
-                hasScrolled = true;
-                if (isNavExpanded) {
+            const scrollingDown = scrollTop > lastScrollTop;
+            const scrollDelta = Math.abs(scrollTop - lastScrollTop);
+    
+            // Ignore tiny jitters (e.g. momentum scrolling on iOS)
+            if (scrollDelta > 5) {
+                if (scrollingDown && isNavExpanded) {
                     collapseNav();
+                } else if (!scrollingDown && !isNavExpanded) {
+                    expandNav();
                 }
             }
     
-            // Expand when back at top
-            if (scrollTop <= 650 && hasScrolled) {
-                hasScrolled = false;
-                expandNav();
-            }
-    
-            // Update active section and progress dots
+            lastScrollTop = scrollTop;
             updateActiveSection();
         });
     
-        // Toggle nav on click
         function toggleNav() {
             if (isNavExpanded) {
                 collapseNav();
@@ -888,24 +893,20 @@
             nav.classList.add('collapsed');
             isNavExpanded = false;
         }
-
+    
         function expandNav() {
             nav.classList.remove('collapsed');
             isNavExpanded = true;
         }
-
-        // Close nav when clicking a link
+    
+        // Collapse when a nav link is clicked, then let scroll direction take over
         function closeNavOnClick(event) {
-            setTimeout(() => {
-                collapseNav();
-                hasScrolled = true; // Prevent auto-expand
-            }, 100);
+            setTimeout(() => collapseNav(), 100);
         }
     
-        // Update active section based on scroll position
         function updateActiveSection() {
             let currentSection = 0;
-            
+    
             sections.forEach((section, index) => {
                 const sectionTop = section.offsetTop - 200;
                 const sectionBottom = sectionTop + section.offsetHeight;
@@ -916,28 +917,17 @@
                 }
             });
     
-            // Update progress dots
             progressDots.forEach((dot, index) => {
-                if (index === currentSection) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
+                dot.classList.toggle('active', index === currentSection);
             });
     
-            // Update nav links
             navLinks.forEach((link, index) => {
-                if (index === currentSection) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
+                link.classList.toggle('active', index === currentSection);
             });
         }
     
         // Initialize
         updateActiveSection();
-        expandIcon.textContent = '✕'; // Start with X when expanded
     </script>
 </body>
 </html>
