@@ -623,3 +623,10 @@ header {
     font-size: 1.5em !important;
     font-weight: bold !important;
 }
+
+/* One-off events in the dates table (e.g. Scuttlebutt) */
+tr.special-event td {
+    background: #fffbe0;
+    border-top: 3px solid #2c2c2c;
+    border-bottom: 3px solid #2c2c2c;
+}
